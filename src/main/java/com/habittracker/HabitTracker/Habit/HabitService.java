@@ -31,7 +31,16 @@ public class HabitService {
     }
 
     // alterar
+    public HabitModel alterarHabito(Long id, HabitModel novoHabito) {
+        Optional<HabitModel> habitoExistente = habitRepository.findById(id);
 
+        if(habitoExistente.isPresent()) {
+            novoHabito.setId(id);
+            return habitRepository.save(novoHabito);
+        } else {
+            return null;
+        }
+    }
 
 
 }

@@ -44,9 +44,9 @@ public class HabitController {
     }
 
     // Update
-    @PutMapping("/alterar")
-    public String alterarHabito() {
-        return "Hábito alterado com sucesso";
+    @PutMapping("/alterar/{id}")
+    public HabitModel alterarHabito(@PathVariable Long id, @RequestBody HabitModel novoHabito) {
+        return habitService.alterarHabito(id, novoHabito);
     }
 
     // Delete
