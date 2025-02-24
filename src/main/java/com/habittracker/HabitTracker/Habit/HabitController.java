@@ -10,9 +10,18 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/habits")
 public class HabitController {
+    private final HabitRepository habitRepository;
+    private final HabitService habitService;
+
+    public HabitController(HabitRepository habitRepository, HabitService habitService) {
+        this.habitRepository = habitRepository;
+        this.habitService = habitService;
+    }
 
     // CRUD: Create, Read, Update, Delete
 
@@ -24,8 +33,14 @@ public class HabitController {
 
     // Read:
     @GetMapping("/listar")
-    public String listarHabitos() {
-        return "Hábitos listados com sucesso";
+    public List<HabitModel> listarHabitos() {
+        return habitService.listarHabitos();
+    }
+
+    // Read (id)
+    @GetMapping("/listar/{id}")
+    public HabitModel listarPorID(@PathVariable Long id) {
+        return habitService.listarHabitosPorID(id);
     }
 
     // Update
