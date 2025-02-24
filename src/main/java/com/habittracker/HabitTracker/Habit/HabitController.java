@@ -50,8 +50,8 @@ public class HabitController {
     }
 
     // Delete
-    @DeleteMapping("/remover")
-    public String removerHabito() {
-        return "Hábito removido com sucesso";
+    @DeleteMapping("/remover/{id}")
+    public void removerHabito(@PathVariable Long id) {
+        habitService.deletarHabito(id);
     }
 }

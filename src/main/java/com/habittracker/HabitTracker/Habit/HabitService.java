@@ -42,5 +42,10 @@ public class HabitService {
         }
     }
 
-
+    // deletar
+    public void deletarHabito(Long id) {
+        if(habitRepository.existsById(id)) {
+            habitRepository.deleteById(id);
+        }
+    }
 }
