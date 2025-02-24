@@ -15,35 +15,35 @@ public class HabitService {
     }
 
     // listar
-    public List<HabitModel> listarHabitos() {
+    public List<HabitModel> getAllHabits() {
         return habitRepository.findAll();
     }
 
     // listar por id
-    public HabitModel listarHabitosPorID(Long id) {
-        Optional<HabitModel> habitoID = habitRepository.findById(id);
-        return habitoID.orElse(null);
+    public HabitModel getHabitById(Long id) {
+        Optional<HabitModel> habitOptional = habitRepository.findById(id);
+        return habitOptional.orElse(null);
     }
 
     // criar
-    public HabitModel adicionarHabito(HabitModel habit) {
+    public HabitModel addHabit(HabitModel habit) {
         return habitRepository.save(habit);
     }
 
     // alterar
-    public HabitModel alterarHabito(Long id, HabitModel novoHabito) {
-        Optional<HabitModel> habitoExistente = habitRepository.findById(id);
+    public HabitModel updateHabit(Long id, HabitModel updatedHabit) {
+        Optional<HabitModel> existingHabit = habitRepository.findById(id);
 
-        if(habitoExistente.isPresent()) {
-            novoHabito.setId(id);
-            return habitRepository.save(novoHabito);
+        if(existingHabit.isPresent()) {
+            updatedHabit.setId(id);
+            return habitRepository.save(updatedHabit);
         } else {
             return null;
         }
     }
 
     // deletar
-    public void deletarHabito(Long id) {
+    public void deleteHabit(Long id) {
         if(habitRepository.existsById(id)) {
             habitRepository.deleteById(id);
         }

@@ -27,31 +27,31 @@ public class HabitController {
 
     // Create:
     @PostMapping("/adicionar")
-    public HabitModel adicionarHabito(@RequestBody HabitModel habit) {
-        return habitService.adicionarHabito(habit);
+    public HabitModel addHabit(@RequestBody HabitModel habit) {
+        return habitService.addHabit(habit);
     }
 
     // Read:
     @GetMapping("/listar")
-    public List<HabitModel> listarHabitos() {
-        return habitService.listarHabitos();
+    public List<HabitModel> getAllHabits() {
+        return habitService.getAllHabits();
     }
 
     // Read (id)
     @GetMapping("/listar/{id}")
-    public HabitModel listarPorID(@PathVariable Long id) {
-        return habitService.listarHabitosPorID(id);
+    public HabitModel getHabitById(@PathVariable Long id) {
+        return habitService.getHabitById(id);
     }
 
     // Update
     @PutMapping("/alterar/{id}")
-    public HabitModel alterarHabito(@PathVariable Long id, @RequestBody HabitModel novoHabito) {
-        return habitService.alterarHabito(id, novoHabito);
+    public HabitModel updateHabit(@PathVariable Long id, @RequestBody HabitModel novoHabito) {
+        return habitService.updateHabit(id, novoHabito);
     }
 
     // Delete
     @DeleteMapping("/remover/{id}")
-    public void removerHabito(@PathVariable Long id) {
-        habitService.deletarHabito(id);
+    public void deleteHabit(@PathVariable Long id) {
+        habitService.deleteHabit(id);
     }
 }
