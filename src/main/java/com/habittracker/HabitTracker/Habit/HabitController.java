@@ -27,8 +27,8 @@ public class HabitController {
 
     // Create:
     @PostMapping("/adicionar")
-    public String adicionarHabito() {
-        return "Hábito adicionado com sucesso";
+    public HabitModel adicionarHabito(@RequestBody HabitModel habit) {
+        return habitService.adicionarHabito(habit);
     }
 
     // Read:
@@ -49,6 +49,7 @@ public class HabitController {
         return "Hábito alterado com sucesso";
     }
 
+    // Delete
     @DeleteMapping("/remover")
     public String removerHabito() {
         return "Hábito removido com sucesso";

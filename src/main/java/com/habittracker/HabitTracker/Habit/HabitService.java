@@ -25,5 +25,13 @@ public class HabitService {
         return habitoID.orElse(null);
     }
 
+    // criar
+    public HabitModel adicionarHabito(HabitModel habit) {
+        return habitRepository.save(habit);
+    }
+
+    // alterar
+
+
 
 }
